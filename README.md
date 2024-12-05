@@ -1,0 +1,10 @@
+# FirstDjango_05122024
+
+## Инструкция по развертыванию проекта
+1. создание виртуального окружения     "python3 -m venv django_venv"
+
+2. активация виртуального окружения    "source djang_venv/bin/activate"
+
+3. содержание пакетовЁ которые были установлены в данное виртуальное окружение    "pip install -r requirements.txt" 
+
+4. запуск нашего проекта    "python manage.py runserver"
