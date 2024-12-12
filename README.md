@@ -8,3 +8,18 @@
 3. содержание пакетовЁ которые были установлены в данное виртуальное окружение    "pip install -r requirements.txt" 
 
 4. запуск нашего проекта    "python manage.py runserver"
+
+## Дополнительно!!
+1. Полезное дополнение для шаблонов   "установить дополнение "Django""
+"""
+extensions install batisteo.vscode-django
+""" 
+Добавить в "settings.json"
+"""
+"emmet.includeLanguages": {
+    "django-html": "html",
+    },
+"files.associations": {
+    "*.html": "django-html"
+    }
+"""
