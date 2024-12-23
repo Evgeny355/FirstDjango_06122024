@@ -9,7 +9,7 @@
 
 4. выполнить сначала миграцию перед запуском проекта "python manage.py migrate"
 
-4. запуск нашего проекта    "python manage.py runserver"
+5. запуск нашего проекта    "python manage.py runserver"
 
 ## Запуск 'ipython' в контексте приложений 'django'
 """
