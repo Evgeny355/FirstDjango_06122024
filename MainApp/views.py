@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 
+from MainApp.models import Item
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 author = {
@@ -12,13 +14,13 @@ author = {
 }
 
 
-items = [
-   {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
-   {"id": 2, "name": "Куртка кожаная" ,"quantity":2},
-   {"id": 5, "name": "Coca-cola 1 литр" ,"quantity":12},
-   {"id": 7, "name": "Картофель фри" ,"quantity":0},
-   {"id": 8, "name": "Кепка" ,"quantity":124},
-]
+# items = [
+#    {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
+#    {"id": 2, "name": "Куртка кожаная" ,"quantity":2},
+#    {"id": 5, "name": "Coca-cola 1 литр" ,"quantity":12},
+#    {"id": 7, "name": "Картофель фри" ,"quantity":0},
+#    {"id": 8, "name": "Кепка" ,"quantity":124},
+# ]
 
 
 def home(request):
@@ -43,7 +45,7 @@ def about(request):
 }
     return render(request, "about_list.html", {"author": author})
 
-def get_item(request, item_id):
+def get_item(request, item_id: int):
     """ По указанному id возвращаем имя элемента"""
     # for item in items:
     #     if item['id'] == item_id:
@@ -55,14 +57,19 @@ def get_item(request, item_id):
     #         return HttpResponse(result)
     # return HttpResponseNotFound(f"Item with id={item_id} not found")
 
-    item = next((item for item in items if item['id'] == item_id), None)
-
-    if item is not None:
+    # item = next((item for item in items if item['id'] == item_id), None)
+    """ По указанному ID возвращаем элемент из БД """
+    try:
+        item = Item.objects.get(id=item_id)
+    except ObjectDoesNotExist:
+        return HttpResponseNotFound(f"Item with id={item_id} not found")
+    # if item is not None:
+    else:
         context = {
               "item": item
         }
         return render(request, "item_page.html", context)
-    return HttpResponseNotFound(f"Item with id={item_id} not found")
+    
 
 def get_items(request):
     # result = "<h1> Список товаров </h1><ol>"
@@ -70,7 +77,8 @@ def get_items(request):
     #     result += f"""<li><a href="/item/{item['id']}"> {item['name']} </li> """
     # result += "</ol>"
     # return HttpResponse(result)
-        context = {
-             "items": items
-        }
-        return render(request, "items_list.html", context)
+    items = Item.objects.all()
+    context = {
+        "items": items
+    }
+    return render(request, "items_list.html", context)
