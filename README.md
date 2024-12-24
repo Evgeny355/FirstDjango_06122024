@@ -15,7 +15,15 @@
 """
 python manage.py shell_plus --ipython
 """
-
+## Выгрузить и загрузить данные из БД
+### Выгрузить данные из БД
+```
+python manage.py dumpdata MainApp --indent 4 > ./fixtures/items.json
+```
+### Загрузить данные в БД
+```
+python manage.py дщфвpdata ./fixtures/items.json
+```
 ## Дополнительно!!
 1. Полезное дополнение для шаблонов   "установить дополнение "Django" и внизу код для вставки в настройки json, чтобы файл с расширением html воспринимался как шаблон django"
 """

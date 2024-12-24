@@ -1,0 +1,32 @@
+[
+{
+    "model": "MainApp.item",
+    "pk": 1,
+    "fields": {
+        "name": "Кепка",
+        "brand": "Lacoste",
+        "count": 10,
+        "note": "nice"
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 2,
+    "fields": {
+        "name": "Кроссовки",
+        "brand": "Abibas",
+        "count": 5,
+        "note": "good cross"
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 3,
+    "fields": {
+        "name": "Coca-cola bottle",
+        "brand": "Coca-cola",
+        "count": 0,
+        "note": "Вкусный напиток"
+    }
+}
+]
